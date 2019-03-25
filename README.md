@@ -95,3 +95,14 @@ for b in all(bullets) do
 end
 if btnp(4) then fire() end
 ```
+
+## 05. Apagar as balas
+
+Explicar que as balas não podem navegar infinitamente pelo ecrã, então, temos de as remover do jogo! Tentar ver se eles sabem quando é que as apagamos.
+
+```lua
+if b.x < 0 or b.x > 128 or
+   b.y < 0 or b.y > 128 then
+   del(bullets, b)
+end
+```
