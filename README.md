@@ -47,7 +47,7 @@ end
 ## 03. Movimento básico da nave.
 
 1. Criar movimento com a utilização das setas do teclado.
-2. O `btn(0)` é o botão da seta para a esquerda, tenta descobrir os outros!
+2. Dá deduzir o valor dos botões, por exemplo `btn(0)` é para a esquerda. 
 
 ```lua
  if btn(0) then ship.x-=1 end --explicar if e 
@@ -56,3 +56,41 @@ end
  if btn(3) then ship.y+=1 end
 ```
   
+## 04. Prepara a nave para disparar.
+
+1. Explicar que para uma bala SUBIR no ecrã a coordenada *y* tem de DIMINUIR. 
+2. O botão **Z** (`btn(4)`) será o botão a clicar para disparar.
+
+Adicionar o seguinte à função `_init()`:
+```lua
+bullets = {} --explicar o que é um vetor
+```
+
+Criar agora uma função de disparo:
+```lua
+function fire()
+ local b = { --explicar que vamos criar uma variavel primeiro
+  sp=3, --sprite
+  x=ship.x, --ponto de partida
+  y=ship.y,
+  dx=0,
+  dy=-3 --movimento a realizar
+ }
+ add(bullets,b) --adicionar ao vetor anterior
+end
+```
+
+Adicionar o seguinte à função `_draw()`:
+```lua
+for b in all(bullets) do 
+  spr(b.sp,b.x,b.y)
+end
+```
+
+Adicionar o seguinte à função `_update`:
+```lua
+for b in all(bullets) do
+  b.x+=b.dx
+  b.y+=b.dy
+end
+```
