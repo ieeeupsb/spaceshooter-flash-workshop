@@ -15,12 +15,6 @@ Explicar que:
 
 ## 01. Desenhar a nave
 
-<div style="text-align:center">
-<img src ="https://ztiromoritz.github.io/pico-8-shooter/gif/tut_1.gif" />
-</div>
-
-<br>
-
 Criar as funções base `_init` e `_draw`. Funções responsáveis pela inicialização das variáveis de jogo e por desenhar, no ecrã, as *sprites* criadas (explicar que uma *sprite* é uma imagem de um objeto, por exemplo, a nave).
 
 ```lua
@@ -33,3 +27,32 @@ function _draw()
  spr(1,ship.x,ship.y) -- explicar o 1 (número da sprite) e posição
 end
 ```
+
+## 02. Animaçãp da propulsão
+
+1. Desenhar duas *sprites* da nave com diferente geometria da propulsão, de forma a criar a aparência de movimento. 
+2. Criar a função `_update` que, para já, será utilizada apenas para ir trocando entre as duas sprites da nave.
+3. Explicar que função `_update` é chamada 30x por segundo.
+
+```lua
+function _update()
+ t=t+1
+ if(t%6<3) then
+  ship.sp=1
+ else
+  ship.sp=2
+end
+```
+
+## 03. Movimento básico da nave.
+
+1. Criar movimento com a utilização das setas do teclado.
+2. O `btn(0)` é o botão da seta para a esquerda, tenta descobrir os outros!
+
+```lua
+ if btn(0) then ship.x-=1 end --explicar if e 
+ if btn(1) then ship.x+=1 end
+ if btn(2) then ship.y-=1 end
+ if btn(3) then ship.y+=1 end
+```
+  
