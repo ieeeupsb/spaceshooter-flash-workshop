@@ -93,4 +93,5 @@ for b in all(bullets) do
   b.x+=b.dx
   b.y+=b.dy
 end
+if btnp(4) then fire() end
 ```
